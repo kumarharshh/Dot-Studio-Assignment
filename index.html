@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Added a background color for better visibility */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .why-choose-us {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .row {
+            display: flex;
+            margin-bottom: 10px; /* Adjust the margin as needed */
+        }
+
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 20px; /* Adjust the margin as needed */
+            position: relative;
+        }
+
+        .col img {
+            width: 400px; /* Updated to make the image responsive */
+            height: 200px;
+            border-radius: 10px 10px 0 0; /* Rounded corners only at the top */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .col:hover img {
+            transform: scale(1.1);
+        }
+
+        .col .text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+            color: white;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s; /* Smooth opacity transition */
+        }
+
+        .col:hover .text-overlay {
+            opacity: 1; /* Make the text fully visible on hover */
+        }
+
+        .col .text-overlay h2,
+        .col .text-overlay p {
+            margin: 0;
+            color: white;
+        }
+
+        /* Media queries for responsive design */
+        @media (max-width: 414px) { /* iPhone XR */
+            .col img {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 415px) and (max-width: 768px) { /* iPad Air */
+            .col {
+                margin: 10px; /* Adjust the margin for iPad Air */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="why-choose-us">Why Choose Us</div>
+        <div class="row">
+            <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
+                <img src="images.jpeg" alt="Image 1">
+                <div class="text-overlay">
+                    <h2>Holistic Development</h2>
+                    <p>Enhancing skills for a brighter future.</p>
+                </div>
+            </div>
+            <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
+                <img src="download.jpeg" alt="Image 2">
+                <div class="text-overlay">
+                    <h2>Proven and Tested Centralized Curriculum</h2>
+                    <p>Quality education for guaranteed success.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
+                <img src="download.png" alt="Image 3">
+                <div class="text-overlay">
+                    <h2>Innovative and Challenging Learning Methodologies</h2>
+                    <p>Explore new ways of learning for personal growth.</p>
+                </div>
+            </div>
+            <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
+                <img src="pexels-max-fischer-5212345.jpg" alt="Image 4">
+                <div class="text-overlay">
+                    <h2>Faculty Enrichment Program</h2>
+                    <p>Empowering educators for effective teaching.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTextOverlay(element) {
+            element.querySelector('.text-overlay').style.opacity = 1;
+        }
+
+        function hideTextOverlay(element) {
+            element.querySelector('.text-overlay').style.opacity = 0;
+        }
+    </script>
+</body>
+</html>
