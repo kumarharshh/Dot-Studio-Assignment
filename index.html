@@ -25,6 +25,13 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
+        .why{
+            color: #114A8D;
+        }
+
+        .txt{
+            color: rgb(252, 252, 196);
+        }
 
         .row {
             display: flex;
@@ -50,25 +57,40 @@
         }
 
         .col:hover img {
-            transform: scale(1.1);
+            transform: scale(1);
         }
-
-        .col .text-overlay {
+        .col .text-overlay1{
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
+            bottom: 2px; /* Add some gap from the bottom */
+            width: 100%; /* Cover the full width */
+             /* Adjust the padding as needed */
+            color: black;
+            opacity: 1; /* Initially hidden */
+        }
+        .col .text-overlay 
+        {
+            position: absolute;
+            top: 20px; /* Add some gap from the top */
+            bottom: 20px; /* Add some gap from the bottom */
+            left: 0; /* Start from the left */
+            width: 100%; /* Cover the full width */
+            padding: 20px; /* Adjust the padding as needed */
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+            background-color: rgba(254, 126, 126, 0.7); /* Black background with 70% opacity */
             color: white;
             opacity: 0; /* Initially hidden */
-            transition: opacity 0.3s; /* Smooth opacity transition */
+            transition: opacity 0.3s, transform 0.3s; /* Smooth opacity and transform transition */
+            transform-origin: bottom left; /* Start transformation from bottom left corner */
+            transform: scaleY(0) translateX(-100%); /* Initially, the box is collapsed vertically and shifted to the left */
         }
 
-        .col:hover .text-overlay {
-            opacity: 1; /* Make the text fully visible on hover */
+        .col:hover .text-overlay 
+        {
+            opacity: 1; /* Make the box fully visible on hover */
+            transform: scaleY(1) translateX(0); /* Expand the box vertically and bring it to its original position */
         }
+
+
 
         .col .text-overlay h2,
         .col .text-overlay p {
@@ -80,6 +102,14 @@
         @media (max-width: 414px) { /* iPhone XR */
             .col img {
                 width: 100%;
+                border-radius: 10px;
+            }
+            .col .text-overlay {
+                padding: 10px; /* Adjust the padding for smaller screens */
+            }
+            .col .text-overlay h2,
+            .col .text-overlay p {
+                font-size: 16px; /* Adjust the font size for smaller screens */
             }
         }
 
@@ -92,20 +122,26 @@
 </head>
 <body>
     <div class="container">
-        <div class="why-choose-us">Why Choose Us</div>
+        <div class="why-choose-us"><span class="why">Why</span> Choose Us</div>
         <div class="row">
             <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
                 <img src="images.jpeg" alt="Image 1">
                 <div class="text-overlay">
-                    <h2>Holistic Development</h2>
-                    <p>Enhancing skills for a brighter future.</p>
+                    <h2><span class="txt">Holistic</span>  Development</h2>
+                    <p>Right Mix of Curricular and Co-Curricular Activities.</p>
+                </div>
+                <div>
+                    <h3 class="text-overlay1"><span class="txt">Holistic</span> Development</h3>
                 </div>
             </div>
             <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
                 <img src="download.jpeg" alt="Image 2">
                 <div class="text-overlay">
-                    <h2>Proven and Tested Centralized Curriculum</h2>
-                    <p>Quality education for guaranteed success.</p>
+                    <h2><span class="txt">Proven</span> and <span>Tested</span> Centralized Curriculum</h2>
+                    <p>CBSE school with balanced traditional & contemporary curriculum to foster growth in all its students.</p>
+                </div>
+                <div>
+                    <h3 class="text-overlay1"><span class="txt">Proven Tested</span> Centralized Curriculum</h3>
                 </div>
             </div>
         </div>
@@ -113,15 +149,21 @@
             <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
                 <img src="download.png" alt="Image 3">
                 <div class="text-overlay">
-                    <h2>Innovative and Challenging Learning Methodologies</h2>
-                    <p>Explore new ways of learning for personal growth.</p>
+                    <h2><span class="txt">Innovative</span> and Challenging Learning Methodologies</h2>
+                    <p>Facilitate excellence through critical thinking and profound learning.</p>
+                </div>
+                <div>
+                    <h3 class="text-overlay1"><span class="txt">Innovative and</span> Challenging Learning Methodologies</h3>
                 </div>
             </div>
             <div class="col" onmouseover="showTextOverlay(this)" onmouseout="hideTextOverlay(this)">
                 <img src="pexels-max-fischer-5212345.jpg" alt="Image 4">
                 <div class="text-overlay">
-                    <h2>Faculty Enrichment Program</h2>
-                    <p>Empowering educators for effective teaching.</p>
+                    <h2><span class="txt">Faculty</span> Enrichment Program</h2>
+                    <p>Regular teacher training and curriculum workshops.</p>
+                </div>
+                <div>
+                    <h3 class="text-overlay1"><span class="txt">Faculty</span> Enrichment Program</h3>
                 </div>
             </div>
         </div>
@@ -130,10 +172,12 @@
     <script>
         function showTextOverlay(element) {
             element.querySelector('.text-overlay').style.opacity = 1;
+            element.querySelector('.text-overlay1').style.opacity = 0;
         }
 
         function hideTextOverlay(element) {
             element.querySelector('.text-overlay').style.opacity = 0;
+            element.querySelector('.text-overlay1').style.opacity = 1;
         }
     </script>
 </body>
